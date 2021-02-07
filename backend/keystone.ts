@@ -8,6 +8,7 @@ import {
 } from '@keystone-next/keystone/session';
 import { Product } from './schemas/Product';
 import { ProductImage } from './schemas/ProductImage';
+import { insertSeedData } from './seed-data';
 
 const databaseURL =
   process.env.DATABASE_URL || 'mongodb://localhost/bakery-sql';
@@ -38,7 +39,12 @@ export default withAuth(
     db: {
       adapter: 'mongoose',
       url: databaseURL,
-      //todo: add data seeding here
+      async onConnect(keystone) {
+        console.log('Connected to the database!');
+        if (process.argv.includes('--seed-data')) {
+          await insertSeedData(keystone);
+        }
+      },
     },
     lists: createSchema({
       //schema goes here
