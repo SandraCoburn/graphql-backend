@@ -2,7 +2,7 @@
   "name": "bakery-backend",
   "version": "2.0.0",
   "private": true,
-  "author": "SCoburn",
+  "author": "SandraCoburn",
   "license": "MIT",
   "scripts": {
     "dev": "keystone-next",
