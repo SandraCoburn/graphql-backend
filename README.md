@@ -20,8 +20,19 @@ GraphQL practice
 npm install
 ```
 
-- Start server
+- Start server, Keystone runs in localhost: 3000
 
 ```
 npm run dev
 ```
+
+- Seed data
+
+```
+npm run seed-data
+```
+
+### Other tools
+
+- Ethereal account to test sending email to reset password.[Ethereal email](http://ethereal.email/) is a fake SMTP service, mostly aimed at Nodemailer users (but not limited to). It's a completely free anti-transactional email service where messages never get delivered.
+- [Postmarkapp](https://postmarkapp.com/) delivers your email to customers.
