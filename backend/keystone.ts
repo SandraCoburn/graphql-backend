@@ -10,6 +10,7 @@ import { Product } from './schemas/Product';
 import { ProductImage } from './schemas/ProductImage';
 import { insertSeedData } from './seed-data';
 import { sendPasswordResetEmail } from './lib/mail';
+import { CartItem } from './schemas/CartItem';
 
 const databaseURL =
   process.env.DATABASE_URL || 'mongodb://localhost/bakery-sql';
@@ -59,6 +60,7 @@ export default withAuth(
       User: User,
       Product: Product,
       ProductImage: ProductImage,
+      CartItem: CartItem,
     }),
     ui: {
       //Show the UI only for people who pass this test
