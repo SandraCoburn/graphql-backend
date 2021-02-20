@@ -9,6 +9,7 @@ import {
 import { Product } from './schemas/Product';
 import { ProductImage } from './schemas/ProductImage';
 import { insertSeedData } from './seed-data';
+import { sendPasswordResetEmail } from './lib/mail';
 
 const databaseURL =
   process.env.DATABASE_URL || 'mongodb://localhost/bakery-sql';
@@ -29,8 +30,8 @@ const { withAuth } = createAuth({
   passwordResetLink: {
     async sendToken(args) {
       //send the email
-      console.log('This is args:', args);
-      // await sendPasswordResetEmail(args.token, args.identity)
+      // console.log('This is args:', args);
+      await sendPasswordResetEmail(args.token, args.identity);
     },
   },
 });

@@ -27,7 +27,10 @@ function makeANiceEmail(text: string) {
 interface MailResponse {
   message: String;
 }
-async function sendPasswordResetEmail(resetToken: string, to: string) {
+export async function sendPasswordResetEmail(
+  resetToken: string,
+  to: string
+): Promise<void> {
   //email the user a token
   const info = (await transport.sendMail({
     to,
