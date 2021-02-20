@@ -36,3 +36,4 @@ npm run seed-data
 
 - Ethereal account to test sending email to reset password.[Ethereal email](http://ethereal.email/) is a fake SMTP service, mostly aimed at Nodemailer users (but not limited to). It's a completely free anti-transactional email service where messages never get delivered.
 - [Postmarkapp](https://postmarkapp.com/) delivers your email to customers.
+- [MakeTypes](http://jvilk.com/MakeTypes/) is a page that helps you get Typescript types for json types data.
