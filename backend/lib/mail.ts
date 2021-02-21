@@ -54,7 +54,7 @@ export async function sendPasswordResetEmail(
   })) as MailResponse;
   // console.log('info', info);
   //To see the preveiw sent email after requesting password link
-  if (process.env.MAIL_USER.includes('ethereal.email')) {
-    console.log(`💌 Message Sent!  Preview it at ${getTestMessageUrl(info)}`);
-  }
+  // if (process.env.MAIL_USER.includes('ethereal.email')) {
+  //   console.log(`💌 Message Sent!  Preview it at ${getTestMessageUrl(info)}`);
+  // }
 }
