@@ -9,6 +9,8 @@ import {
 import { Product } from './schemas/Product';
 import { ProductImage } from './schemas/ProductImage';
 import { insertSeedData } from './seed-data';
+import { sendPasswordResetEmail } from './lib/mail';
+import { CartItem } from './schemas/CartItem';
 
 const databaseURL =
   process.env.DATABASE_URL || 'mongodb://localhost/bakery-sql';
@@ -25,6 +27,13 @@ const { withAuth } = createAuth({
   initFirstItem: {
     fields: ['name', 'email', 'password'],
     //todo: add in intial roles here
+  },
+  passwordResetLink: {
+    async sendToken(args) {
+      //send the email
+      // console.log('This is args:', args);
+      await sendPasswordResetEmail(args.token, args.identity);
+    },
   },
 });
 
@@ -51,6 +60,7 @@ export default withAuth(
       User: User,
       Product: Product,
       ProductImage: ProductImage,
+      CartItem: CartItem,
     }),
     ui: {
       //Show the UI only for people who pass this test
