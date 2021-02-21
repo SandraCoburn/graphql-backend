@@ -11,6 +11,7 @@ import { ProductImage } from './schemas/ProductImage';
 import { insertSeedData } from './seed-data';
 import { sendPasswordResetEmail } from './lib/mail';
 import { CartItem } from './schemas/CartItem';
+import { extendGraphqlSchema } from './mutations';
 
 const databaseURL =
   process.env.DATABASE_URL || 'mongodb://localhost/bakery-sql';
@@ -62,6 +63,8 @@ export default withAuth(
       ProductImage: ProductImage,
       CartItem: CartItem,
     }),
+    //Custom mutation
+    extendGraphqlSchema,
     ui: {
       //Show the UI only for people who pass this test
       isAccessAllowed: ({ session }) => {
