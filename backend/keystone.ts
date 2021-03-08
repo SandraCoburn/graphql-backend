@@ -14,6 +14,7 @@ import { CartItem } from './schemas/CartItem';
 import { extendGraphqlSchema } from './mutations';
 import { OrderItem } from './schemas/OrderItem';
 import { Order } from './schemas/Order';
+import { Role } from './schemas/Role';
 
 const databaseURL =
   process.env.DATABASE_URL || 'mongodb://localhost/bakery-sql';
@@ -66,6 +67,7 @@ export default withAuth(
       CartItem: CartItem,
       OrderItem: OrderItem,
       Order: Order,
+      Role,
     }),
     //Custom mutation
     extendGraphqlSchema,
