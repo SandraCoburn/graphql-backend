@@ -68,7 +68,7 @@ export default withAuth(
       CartItem: CartItem,
       OrderItem: OrderItem,
       Order: Order,
-      Role,
+      Role: Role,
     }),
     //Custom mutation
     extendGraphqlSchema,
