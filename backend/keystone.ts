@@ -14,6 +14,8 @@ import { CartItem } from './schemas/CartItem';
 import { extendGraphqlSchema } from './mutations';
 import { OrderItem } from './schemas/OrderItem';
 import { Order } from './schemas/Order';
+import { Role } from './schemas/Role';
+import { permissionsList } from './schemas/fields';
 
 const databaseURL =
   process.env.DATABASE_URL || 'mongodb://localhost/bakery-sql';
@@ -66,6 +68,7 @@ export default withAuth(
       CartItem: CartItem,
       OrderItem: OrderItem,
       Order: Order,
+      Role: Role,
     }),
     //Custom mutation
     extendGraphqlSchema,
@@ -78,7 +81,7 @@ export default withAuth(
     },
     session: withItemData(statelessSessions(sessionConfig), {
       //GraphQL Query
-      User: 'id name email',
+      User: `id name email role {${permissionsList.join(' ')}}`,
     }),
   })
 );

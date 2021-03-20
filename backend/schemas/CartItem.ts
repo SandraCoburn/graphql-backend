@@ -1,8 +1,14 @@
 import { integer, relationship, select, text } from '@keystone-next/fields';
 import { list } from '@keystone-next/keystone/schema';
+import { isSignedIn, rules } from '../access';
 
 export const CartItem = list({
-  //todo access:
+  access: {
+    create: isSignedIn,
+    read: rules.canOrder,
+    update: rules.canOrder,
+    delete: rules.canOrder,
+  },
   //Have the list view in UI to show all the fields from an order in cart
   ui: {
     listView: {
