@@ -66,4 +66,15 @@ export const rules = {
     // 2. if not, do they own this item?
     return { order: { user: { id: session.itemId } } };
   },
+  canManageUsers({ session }: ListAccessArgs) {
+    if (!isSignedIn({ session })) {
+      return false;
+    }
+    // 1. Do they have the permission of canManageUsers
+    if (permissions.canManageUsers({ session })) {
+      return true;
+    }
+    // 2. Otherwise they can only update themselves
+    return { id: session.itemId };
+  },
 };
